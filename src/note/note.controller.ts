@@ -1,30 +1,23 @@
-import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateNoteDTO } from './dtos/indext';
+import { NoteService } from './note.service';
 
 @Controller('note')
 export class NoteController {
+  constructor(private readonly noteService: NoteService) {}
+
   @Get()
   getAllNotes() {
-    return '';
+    return this.noteService.getAllNotes();
   }
 
   @Get(':id')
-  oneNote() {
-    return '';
+  oneNote(@Param('id') id) {
+    return this.oneNote(id);
   }
 
   @Post()
   createNote(@Body() dto: CreateNoteDTO) {
-    return dto;
-  }
-
-  @Put(':id')
-  updateNote() {
-    return '';
-  }
-
-  @Delete(':id')
-  deleteNote() {
-    return '';
+    return this.noteService.createNote(dto);
   }
 }
