@@ -20,10 +20,13 @@ export class UserService {
   }
 
   async login(mail, password, session) {
-    const user = await this.user.findOne({ where: { mail, password } });
-    if (!user) return new NotFoundException();
-    session.user = user;
-    return user;
+    if (!session.user) {
+      const user = await this.user.findOne({ where: { mail, password } });
+      if (!user) return new NotFoundException();
+      session.user = user;
+      return user;
+    }
+    return session.user;
   }
 
   async register(user) {
