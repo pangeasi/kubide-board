@@ -1,30 +1,27 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# Kubide-board
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+ApiREST utilizando NestJS, construcción basada en las siguientes historias de usuario
+
+- Como USUARIO quiero poder llamar al API, es decir, quiero poder tener un servidor local al que hacer una llamada HTTP y que me devuelva algo.
+- Como USUARIO quiero poder llamar al API para crear notas.
+- Como USUARIO quiero poder llamar al API para consultar las notas.
+- Como USUARIO quiero poder llamar al API para consultar una sóla nota.
+- Como USUARIO quiero poder llamar al API para marcar como favorita una nota.
+- Como USUARIO quiero poder llamar al API para consultar las notas marcadas como favoritas.
+
+1. Persistencia en MariaDB con TypeORM
+
+2. Session-express para gestionar sesiones
+
+3. Se parte de las siguientes entidades: User, Note, Fav
+
+Realizado con:
+
+<p align="center">
+<a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="160" alt="Nest Logo" /></a>
+</p>
 
 ## Installation
 
@@ -41,33 +38,161 @@ $ npm run start
 # watch mode
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
 ```
 
-## Test
+## Endpoints
+
+### Users
+
+#### Registrar un usuario
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+curl --location --request POST 'localhost:3000/user/register' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Dani",
+    "mail": "dani@kk4.es",
+    "password": "12345"
+}'
 ```
 
-## Support
+#### Login de un usuario
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+curl --location --request POST 'localhost:3000/user/login' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "mail": "test@example.com",
+    "password": "12345"
+}'
+```
 
-## Stay in touch
+#### comprobar session
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+curl --location --request POST 'localhost:3000/user' \
+--header 'Content-Type: application/json' \
+```
 
-## License
+### Notes
 
-Nest is [MIT licensed](LICENSE).
+#### crear una nota
+
+# Kubide-board
+
+## Description
+
+ApiREST utilizando NestJS, construcción basada en las siguientes historias de usuario
+
+- Como USUARIO quiero poder llamar al API, es decir, quiero poder tener un servidor local al que hacer una llamada HTTP y que me devuelva algo.
+- Como USUARIO quiero poder llamar al API para crear notas.
+- Como USUARIO quiero poder llamar al API para consultar las notas.
+- Como USUARIO quiero poder llamar al API para consultar una sóla nota.
+- Como USUARIO quiero poder llamar al API para marcar como favorita una nota.
+- Como USUARIO quiero poder llamar al API para consultar las notas marcadas como favoritas.
+
+1. Persistencia en MariaDB con TypeORM
+
+2. Session-express para gestionar sesiones
+
+3. Se parte de las siguientes entidades: User, Note, Fav
+
+Realizado con:
+
+<p align="center">
+<a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="160" alt="Nest Logo" /></a>
+</p>
+
+## Installation
+
+```bash
+$ npm install
+```
+
+## Running the app
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+```
+
+## Endpoints
+
+### Registrar un usuario
+
+```bash
+curl --location --request POST 'localhost:3000/user/register' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Dani",
+    "mail": "dani@kk4.es",
+    "password": "12345"
+}'
+```
+
+### Login de un usuario
+
+```bash
+curl --location --request POST 'localhost:3000/user/login' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "mail": "test@example.com",
+    "password": "12345"
+}'
+```
+
+### comprobar session
+
+```bash
+curl --location --request GET 'localhost:3000/user' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: connect.sid=s%3AKHskqimak8vfCPjh4lbhF42TXz8J_1Ei.4jJgbnxtAOii7nAQyPhjINkFWwYFwvVktJ6ZBkMubCI'
+```
+
+### Crear una nota
+
+```bash
+curl --location --request POST 'localhost:3000/note' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: connect.sid=s%3AKHskqimak8vfCPjh4lbhF42TXz8J_1Ei.4jJgbnxtAOii7nAQyPhjINkFWwYFwvVktJ6ZBkMubCI' \
+--data-raw '{
+    "message": "hola mundo!"
+}'
+```
+
+### consultar notas
+
+```bash
+curl --location --request GET 'localhost:3000/note' \
+--header 'Content-Type: application/json' \
+```
+
+### consultar una nota
+
+```bash
+curl --location --request GET 'localhost:3000/note/{uuid}' \
+--header 'Content-Type: application/json' \
+```
+
+### marcar nota favorita
+
+```bash
+curl --location --request POST 'localhost:3000/fav' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: connect.sid=s%3AKHskqimak8vfCPjh4lbhF42TXz8J_1Ei.4jJgbnxtAOii7nAQyPhjINkFWwYFwvVktJ6ZBkMubCI' \
+--data-raw '{
+    "note": "{uuid}"
+}'
+```
+
+### lista de notas favoritas
+
+```bash
+curl --location --request GET 'localhost:3000/fav' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: connect.sid=s%3AKHskqimak8vfCPjh4lbhF42TXz8J_1Ei.4jJgbnxtAOii7nAQyPhjINkFWwYFwvVktJ6ZBkMubCI' \
+```

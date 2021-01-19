@@ -18,7 +18,7 @@ export class NoteService {
   }
 
   oneNote(id: string) {
-    return this.note.find({ id });
+    return this.note.find({ where: { id }, relations: ['user'] });
   }
 
   createNote(dto: CreateNoteDTO, session: SessionType) {
