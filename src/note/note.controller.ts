@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Session } from '@nestjs/common';
+import { SessionType } from 'src/helpers/entities/session.type';
 import { CreateNoteDTO } from './dtos/indext';
 import { NoteService } from './note.service';
 
@@ -17,7 +18,7 @@ export class NoteController {
   }
 
   @Post()
-  createNote(@Body() dto: CreateNoteDTO) {
-    return this.noteService.createNote(dto);
+  createNote(@Body() dto: CreateNoteDTO, @Session() session: SessionType) {
+    return this.noteService.createNote(dto, session);
   }
 }

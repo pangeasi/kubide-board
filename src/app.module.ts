@@ -16,6 +16,8 @@ import { FavModule } from './fav/fav.module';
       password: '',
       database: 'kubideboard',
       entities: [`${__dirname}./**/*entity{.ts,.js}`],
+      dropSchema: false,
+      logging: true,
       autoLoadEntities: true,
       synchronize: true,
     }),
