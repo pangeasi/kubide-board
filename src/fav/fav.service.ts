@@ -18,6 +18,7 @@ export class FavService {
   ) {}
 
   getAllFavs(user) {
+    if (!user) return new UnauthorizedException();
     return this.fav.find({ where: { user }, relations: ['user', 'note'] });
   }
 

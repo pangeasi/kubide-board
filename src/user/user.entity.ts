@@ -11,7 +11,7 @@ export class User extends BaseEntityExtended {
   @Column()
   mail: string;
 
-  @Column()
+  @Column({ select: false })
   password: string;
 
   @OneToMany(() => Fav, (fav) => fav.user)

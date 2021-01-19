@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SessionType } from 'src/helpers/entities/session.type';
 import { User } from 'src/user/user.entity';
@@ -22,6 +22,7 @@ export class NoteService {
   }
 
   createNote(dto: CreateNoteDTO, session: SessionType) {
+    if (!session.user) return new UnauthorizedException();
     return this.note.save({ user: session.user as User, ...dto });
   }
 }
