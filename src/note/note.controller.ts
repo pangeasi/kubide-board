@@ -7,14 +7,15 @@ import { NoteService } from './note.service';
 export class NoteController {
   constructor(private readonly noteService: NoteService) {}
 
+  @Get(':id')
+  oneNote(@Param('id') id: string) {
+    console.log(id);
+    return this.noteService.oneNote(id);
+  }
+
   @Get()
   getAllNotes() {
     return this.noteService.getAllNotes();
-  }
-
-  @Get(':id')
-  oneNote(@Param('id') id) {
-    return this.oneNote(id);
   }
 
   @Post()
