@@ -1,6 +1,7 @@
 import { Fav } from 'src/fav/fav.entity';
 import { BaseEntityExtended } from 'src/helpers/db/entity-extended';
-import { Column, Entity, OneToMany, OneToOne } from 'typeorm';
+import { Note } from 'src/note/note.entity';
+import { Column, Entity, OneToMany } from 'typeorm';
 
 @Entity()
 export class User extends BaseEntityExtended {
@@ -15,4 +16,7 @@ export class User extends BaseEntityExtended {
 
   @OneToMany(() => Fav, (fav) => fav.user)
   favs: Fav[];
+
+  @OneToMany(() => Note, (note) => note.user)
+  notes: Note[];
 }

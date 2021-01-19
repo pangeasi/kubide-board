@@ -1,6 +1,14 @@
 import { Fav } from 'src/fav/fav.entity';
 import { BaseEntityExtended } from 'src/helpers/db/entity-extended';
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from 'src/user/user.entity';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Note extends BaseEntityExtended {
@@ -10,6 +18,9 @@ export class Note extends BaseEntityExtended {
   @Column()
   message: string;
 
-  @OneToOne(() => Fav, (fav) => fav.note)
-  fav: Fav;
+  @OneToMany(() => Fav, (fav) => fav.note)
+  fav: Fav[];
+
+  @ManyToOne(() => User, (user) => user.notes)
+  user: User;
 }
